@@ -121,17 +121,17 @@ public class AddFlashcardWindow extends JFrame {
 		btnAdd.setBackground(new Color(169, 169, 200));
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				String deck = nameTxt.getText();
-				String front = frontSideTxt.getText();		
+				String front = frontSideTxt.getText();
 				String back = backSideTxt.getText();
-				
-				Flashcard newCard = new Flashcard(front, back);
-				
-//				HomeWindow.currentDecks.forEach(cd -> {
-//					
-//				});
-				
+
+				HomeWindow.currentDecks.forEach(cd -> {
+					if (cd.getName() == deck) {
+						cd.addCard(front, back);
+					}
+				});
+
 			}
 		});
 		return btnAdd;
