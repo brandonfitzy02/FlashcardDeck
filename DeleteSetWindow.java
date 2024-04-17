@@ -299,9 +299,8 @@ public class DeleteSetWindow extends JFrame {
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					String[] options = { "yes", "no" };
-					int selection = JOptionPane.showOptionDialog(null, "Select one:",
-							"Are you sure you'd like to delete set:" + HomeWindow.currentDecks.get(value - 1).getName(),
-							0, 2, null, options, options[0]);
+					int selection = JOptionPane.showOptionDialog(null, "Are you sure you'd like to delete the set?",
+							"Select an option", 0, 2, null, options, options[0]);
 					if (selection == 0) {
 						HomeWindow.currentDecks.remove(value - 1);
 						close();
