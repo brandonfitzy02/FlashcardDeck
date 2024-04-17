@@ -106,14 +106,19 @@ public class AddSetWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (HomeWindow.currentDecks.size() < 12) {
 					String name = nameOfSetTxt.getText();
+					if (name.isEmpty()) {
 
-					FlashcardDeck fd = new FlashcardDeck(name);
+					} else {
+						FlashcardDeck fd = new FlashcardDeck(name);
 
-					HomeWindow.currentDecks.add(fd);
+						HomeWindow.currentDecks.add(fd);
+					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Maximum value reached");
 				}
-				nameOfSetTxt.setText("");
+				close();
+				AddWindow as = new AddWindow();
+				as.setVisible(true);
 			}
 		});
 
