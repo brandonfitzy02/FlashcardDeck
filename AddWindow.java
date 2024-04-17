@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
@@ -89,9 +90,13 @@ public class AddWindow extends JFrame {
 		JButton btnAddFlashcard = new JButton("Add flashcards to an existing set");
 		btnAddFlashcard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				close();
-				AddFlashcardWindow as = new AddFlashcardWindow();
-				as.setVisible(true);
+				if (HomeWindow.currentDecks.size() == 0) {
+					JOptionPane.showMessageDialog(null, "No sets currently exist.");
+				} else {
+					close();
+					AddFlashcardWindow as = new AddFlashcardWindow();
+					as.setVisible(true);
+				}
 			}
 		});
 		btnAddFlashcard.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
