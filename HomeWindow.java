@@ -32,7 +32,7 @@ public class HomeWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public static List<FlashcardDeck> currentDecks = new ArrayList<FlashcardDeck>(12);
+	public static List<FlashcardDeck> currentDecks = new ArrayList<>(12);
 
 	/**
 	 * Launch the application.
@@ -98,6 +98,10 @@ public class HomeWindow extends JFrame {
 				WestPanel.add(btnLastOpened);
 			}
 		}
+
+	}
+
+	public static void readingFile(List<FlashcardDeck> list) {
 
 	}
 
