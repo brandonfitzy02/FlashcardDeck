@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -297,10 +298,19 @@ public class DeleteSetWindow extends JFrame {
 		if (button.getText() != "Empty")
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					HomeWindow.currentDecks.remove(value - 1);
-					close();
-					DeleteSetWindow ds = new DeleteSetWindow();
-					ds.setVisible(true);
+					String[] options = { "yes", "no" };
+					int selection = JOptionPane.showOptionDialog(null, "Select one:",
+							"Are you sure you'd like to delete set:" + HomeWindow.currentDecks.get(value - 1).getName(),
+							0, 2, null, options, options[0]);
+					if (selection == 0) {
+						HomeWindow.currentDecks.remove(value - 1);
+						close();
+						DeleteSetWindow ds = new DeleteSetWindow();
+						ds.setVisible(true);
+					}
+					if (selection == 1) {
+						JOptionPane.showMessageDialog(null, "Operation was cancelled");
+					}
 				}
 			});
 	}
