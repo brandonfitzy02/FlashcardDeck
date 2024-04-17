@@ -18,6 +18,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 /**
@@ -29,6 +30,7 @@ public class ViewSetsWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	public static int deckNum;
 
 	/**
 	 * Launch the application.
@@ -138,6 +140,13 @@ public class ViewSetsWindow extends JFrame {
 			}
 
 		}
+	}
+	
+	/**
+	 * Resets the current flashcard when looking in view window
+	 */
+	public static void resetCurrentFlashcard() {
+		FlashcardWindow.currentFlashcard = 0;
 	}
 
 	/**
@@ -283,7 +292,7 @@ public class ViewSetsWindow extends JFrame {
 		btnSetAction(1, btnSet1);
 		return btnSet1;
 	}
-	
+
 	/**
 	 * Method for all buttons to delete from deck list
 	 * 
@@ -294,18 +303,22 @@ public class ViewSetsWindow extends JFrame {
 		if (HomeWindow.currentDecks.size() >= value) {
 			button.setText(HomeWindow.currentDecks.get(value - 1).getName());
 		}
-		if(button.getText()!="Empty")
-			button.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					button.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							close();
-							FlashcardWindow as = new FlashcardWindow();
-							as.setVisible(true);
-						}
-					});
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (button.getText() == "Empty") {
+					JOptionPane.showMessageDialog(null, "No set currently occupies this spot.");
+
+				} else if (HomeWindow.currentDecks.get(ViewSetsWindow.deckNum).getCard(0) == null) {
+					JOptionPane.showMessageDialog(null, "No flashcards are on this set!");
+				} else {
+					close();
+					FlashcardWindow as = new FlashcardWindow();
+					as.setVisible(true);
+					deckNum = value - 1;
+
 				}
-			});
+			}
+		});
 	}
 
 	/**
