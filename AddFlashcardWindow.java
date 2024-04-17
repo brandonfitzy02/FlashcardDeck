@@ -105,10 +105,10 @@ public class AddFlashcardWindow extends JFrame {
 			centerPanel.add(backSideTxt);
 			backSideTxt.setColumns(10);
 		}
-		
+
 		JButton btnAdd = btnAdd();
 		contentPane.add(btnAdd, BorderLayout.SOUTH);
-		
+
 	}
 
 	/**
@@ -127,10 +127,14 @@ public class AddFlashcardWindow extends JFrame {
 				String back = backSideTxt.getText();
 
 				HomeWindow.currentDecks.forEach(cd -> {
-					if (cd.getName() == deck) {
+					if (cd.getName().equals(deck)) {
 						cd.addCard(front, back);
 					}
 				});
+
+				close();
+				AddWindow as = new AddWindow();
+				as.setVisible(true);
 
 			}
 		});
@@ -176,7 +180,7 @@ public class AddFlashcardWindow extends JFrame {
 		lblBackSide.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		return lblBackSide;
 	}
-	
+
 	/**
 	 * Title for the front side of the flashcard
 	 * 
