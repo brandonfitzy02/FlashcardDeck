@@ -2,6 +2,7 @@ package teamProjectGui;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 /**
  * This class represents a collection of flashcards. It includes an ArrayList of
@@ -54,16 +55,9 @@ public class FlashcardDeck {
 	}
 
 	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
 	 * Method for getting the card.
 	 * 
-	 * @param index Index of the card in the flashcardDecl.
+	 * @param index Index of the card in the flashcardDeck.
 	 * @return The index of the flashcard or null.
 	 */
 	public Flashcard getCard(int index) {
@@ -80,4 +74,24 @@ public class FlashcardDeck {
 	public void shuffle() {
 		Collections.shuffle(flashcardDeck);
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(flashcardDeck, name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FlashcardDeck other = (FlashcardDeck) obj;
+		return Objects.equals(flashcardDeck, other.flashcardDeck) && Objects.equals(name, other.name);
+	}
+	
+	
+	
 }
