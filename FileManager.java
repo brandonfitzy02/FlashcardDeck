@@ -30,8 +30,8 @@ public class FileManager {
 				}
 			}
 			flashcards.forEach(c -> {
-				System.out.println("Front: " + c.front);
-				System.out.println("Back: " + c.back + "\n");
+				System.out.println("Front: " + c.getFront());
+				System.out.println("Back: " + c.getBack() + "\n");
 			});
 
 			return flashcards;
