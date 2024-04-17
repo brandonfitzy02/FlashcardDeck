@@ -8,8 +8,6 @@ import java.util.Scanner;
 
 /**
  * This class serves as a file manager for reading from and writing to files.
- * Working on this class and making changes to the TestClient took me around 2
- * hours.
  * 
  * @author Diego Galvan
  */
