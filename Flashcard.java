@@ -7,9 +7,9 @@ package teamProjectGui;
 * @author Diego Galvan
 */
 public class Flashcard {
-	public String front;
-	public String back;
-	public boolean isVisible; // True if the back is visible; false if front is visible
+	private String front;
+	private String back;
+	private boolean isVisible; // True if the back is visible; false if front is visible
  
 	/**
 	 * Constructor method for initializing the Flashcard object.
@@ -22,7 +22,29 @@ public class Flashcard {
 		this.back = back;
 		this.isVisible = false; // Initially, the back of the card is not visible
 	}
+	
  
+	/**
+	 * @return the front
+	 */
+	public String getFront() {
+		return front;
+	}
+
+	/**
+	 * @return the back
+	 */
+	public String getBack() {
+		return back;
+	}
+
+	/**
+	 * @return the isVisible
+	 */
+	public boolean isVisible() {
+		return isVisible;
+	}
+
 	/**
 	 * Method for flipping the card over. If isVisible = false, front side is
 	 * displayed. If isVisible = true, back side is displayed.
@@ -31,5 +53,3 @@ public class Flashcard {
 			isVisible = !isVisible;
 		}
 }
-
-
