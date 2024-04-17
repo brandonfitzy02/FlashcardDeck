@@ -29,6 +29,8 @@ public class FlashcardWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	public static int currentFlashcard;
+	private JButton flashcardlbl;
 
 	/**
 	 * Launch the application.
@@ -75,31 +77,31 @@ public class FlashcardWindow extends JFrame {
 		JButton homeBtn = homeBtn();
 		panel.add(homeBtn);
 
-		JLabel Flashcardlbl = lblFlashcard();
-		contentPane.add(Flashcardlbl, BorderLayout.CENTER);
+		flashcardlbl = lblFlashcard();
+		contentPane.add(flashcardlbl, BorderLayout.CENTER);
+
+		JPanel bottomPanel = new JPanel();
+		bottomPanel.setBorder(new EmptyBorder(0, 10, 10, 10));
+		bottomPanel.setOpaque(false);
+		contentPane.add(bottomPanel, BorderLayout.SOUTH);
+		bottomPanel.setLayout(new GridLayout(0, 4, 0, 0));
 		{
-			JPanel panel_1 = new JPanel();
-			panel_1.setBorder(new EmptyBorder(0, 10, 10, 10));
-			panel_1.setOpaque(false);
-			contentPane.add(panel_1, BorderLayout.SOUTH);
-			panel_1.setLayout(new GridLayout(0, 4, 0, 0));
-			{
-				JButton btnPrevious = btnPrevious();
-				panel_1.add(btnPrevious);
-			}
-			{
-				JLabel lblGap1 = new JLabel("");
-				panel_1.add(lblGap1);
-			}
-			{
-				JLabel lblGap2 = new JLabel("");
-				panel_1.add(lblGap2);
-			}
-			{
-				JButton btnNext = btnNext();
-				panel_1.add(btnNext);
-			}
+			JButton btnPrevious = btnPrevious();
+			bottomPanel.add(btnPrevious);
 		}
+		{
+			JLabel lblGap1 = new JLabel("");
+			bottomPanel.add(lblGap1);
+		}
+		{
+			JLabel lblGap2 = new JLabel("");
+			bottomPanel.add(lblGap2);
+		}
+		{
+			JButton btnNext = btnNext();
+			bottomPanel.add(btnNext);
+		}
+
 	}
 
 	/**
@@ -109,6 +111,18 @@ public class FlashcardWindow extends JFrame {
 		JButton btnNext = new JButton("Next");
 		btnNext.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnNext.setBackground(new Color(169, 169, 200));
+		if (HomeWindow.currentDecks.get(ViewSetsWindow.deckNum).getCard(currentFlashcard + 1) != null) {
+			btnNext.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					currentFlashcard = currentFlashcard + 1;
+					close();
+					FlashcardWindow as = new FlashcardWindow();
+					as.setVisible(true);
+				}
+			});
+		} else {
+			btnNext.setVisible(false);
+		}
 		return btnNext;
 	}
 
@@ -119,19 +133,46 @@ public class FlashcardWindow extends JFrame {
 		JButton btnPrevious = new JButton("Previous");
 		btnPrevious.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnPrevious.setBackground(new Color(169, 169, 200));
+		if (currentFlashcard > 0) {
+			btnPrevious.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					currentFlashcard = currentFlashcard - 1;
+					close();
+					FlashcardWindow as = new FlashcardWindow();
+					as.setVisible(true);
+				}
+			});
+		} else {
+			btnPrevious.setVisible(false);
+		}
 		return btnPrevious;
 	}
 
 	/**
 	 * Label in center showing front and back sides of a flashcard
 	 */
-	private JLabel lblFlashcard() {
-		JLabel Flashcardlbl = new JLabel("fdName");
-		Flashcardlbl.setBorder(new MatteBorder(75, 100, 75, 100, (Color) new Color(130, 125, 150)));
-		Flashcardlbl.setOpaque(true);
-		Flashcardlbl.setFont(new Font("Trebuchet MS", Font.PLAIN, 20));
-		Flashcardlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		return Flashcardlbl;
+	private JButton lblFlashcard() {
+		JButton btnFlashcard = new JButton(
+				HomeWindow.currentDecks.get(ViewSetsWindow.deckNum).getCard(currentFlashcard).getFront().toString());
+		btnFlashcard.setBorder(new MatteBorder(75, 100, 75, 100, (Color) new Color(130, 125, 150)));
+		btnFlashcard.setOpaque(true);
+		btnFlashcard.setFont(new Font("Trebuchet MS", Font.PLAIN, 20));
+		btnFlashcard.setHorizontalAlignment(SwingConstants.CENTER);
+
+		btnFlashcard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (btnFlashcard.getText() == HomeWindow.currentDecks.get(ViewSetsWindow.deckNum)
+						.getCard(currentFlashcard).getFront()) {
+					btnFlashcard.setText(
+							HomeWindow.currentDecks.get(ViewSetsWindow.deckNum).getCard(currentFlashcard).getBack());
+				} else {
+					btnFlashcard.setText(
+							HomeWindow.currentDecks.get(ViewSetsWindow.deckNum).getCard(currentFlashcard).getFront());
+				}
+			}
+		});
+
+		return btnFlashcard;
 	}
 
 	/**
