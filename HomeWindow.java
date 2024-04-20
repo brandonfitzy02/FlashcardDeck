@@ -20,7 +20,6 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.border.EtchedBorder;
-import javax.swing.border.MatteBorder;
 
 /**
  * Window for the HOME section of FlashcardGUI
@@ -84,51 +83,7 @@ public class HomeWindow extends JFrame {
 
 		JLabel lblNewLabel_1 = bottomTextLabel();
 		contentPane.add(lblNewLabel_1, BorderLayout.SOUTH);
-		{
-			JPanel WestPanel = new JPanel();
-			WestPanel.setOpaque(false);
-			contentPane.add(WestPanel, BorderLayout.WEST);
-			WestPanel.setLayout(new GridLayout(0, 1, 0, 0));
-			{
-				JLabel lblLastOpened = lblLastOpened();
-				WestPanel.add(lblLastOpened);
-			}
-			{
-				JButton btnLastOpened = btnLastOpened();
-				WestPanel.add(btnLastOpened);
-			}
-		}
 
-	}
-
-	public static void readingFile(List<FlashcardDeck> list) {
-
-	}
-
-	/**
-	 * A button to press the last opened deck
-	 */
-	private JButton btnLastOpened() {
-		JButton btnLastOpened = new JButton("This is a test");
-		if (currentDecks.isEmpty() || currentDecks.size() == 0) {
-			btnLastOpened.setVisible(false);
-		}
-		btnLastOpened.setBorder(new MatteBorder(10, 10, 70, 10, (Color) new Color(130, 125, 150)));
-		return btnLastOpened;
-	}
-
-	/**
-	 * Shows a label of the last opened deck
-	 */
-	private JLabel lblLastOpened() {
-		JLabel lblLastOpened = new JLabel("TBD");
-		if (currentDecks.isEmpty() || currentDecks.size() == 0) {
-			lblLastOpened.setVisible(false);
-		}
-		lblLastOpened.setBorder(new EmptyBorder(50, 0, 10, 0));
-		lblLastOpened.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLastOpened.setFont(new Font("Trebuchet MS", Font.ITALIC, 20));
-		return lblLastOpened;
 	}
 
 	/**
@@ -157,7 +112,7 @@ public class HomeWindow extends JFrame {
 		if (currentDecks.isEmpty() || currentDecks.size() == 0) {
 			lblWelcomeTxt.setText("Welcome");
 		}
-		lblWelcomeTxt.setBorder(new EmptyBorder(0, 0, 100, 90));
+		lblWelcomeTxt.setBorder(new EmptyBorder(0, 0, 100, 0));
 		lblWelcomeTxt.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcomeTxt.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
 		return lblWelcomeTxt;
