@@ -99,6 +99,7 @@ public class AddWindow extends JFrame {
 				}
 			}
 		});
+		btnAddFlashcard.setOpaque(true);
 		btnAddFlashcard.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		btnAddFlashcard.setBorder(new MatteBorder(150, 20, 150, 20, (Color) new Color(130, 125, 150)));
 		btnAddFlashcard.setBackground(new Color(169, 169, 200));
@@ -117,6 +118,7 @@ public class AddWindow extends JFrame {
 				as.setVisible(true);
 			}
 		});
+		btnAddSet.setOpaque(true);
 		btnAddSet.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		btnAddSet.setBorder(new MatteBorder(150, 20, 150, 20, (Color) new Color(130, 125, 150)));
 		btnAddSet.setBackground(new Color(169, 169, 200));
@@ -139,6 +141,7 @@ public class AddWindow extends JFrame {
 	 */
 	private JButton addSetBtn() {
 		JButton addSetBtn = new JButton("Add Set");
+		addSetBtn.setOpaque(true);
 		addSetBtn.setForeground(new Color(255, 255, 255));
 		addSetBtn.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		addSetBtn.setBackground(new Color(150, 150, 150));
@@ -153,6 +156,7 @@ public class AddWindow extends JFrame {
 	 */
 	private JButton deleteSetBtn() {
 		JButton deleteSetBtn = new JButton("Delete Set");
+		deleteSetBtn.setOpaque(true);
 		deleteSetBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		deleteSetBtn.setBackground(new Color(169, 169, 169));
 		deleteSetBtn.addActionListener(new ActionListener() {
@@ -173,6 +177,7 @@ public class AddWindow extends JFrame {
 	 */
 	private JButton viewSetsBtn() {
 		JButton viewSetsBtn = new JButton("View Sets");
+		viewSetsBtn.setOpaque(true);
 		viewSetsBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		viewSetsBtn.setBackground(new Color(169, 169, 169));
 		viewSetsBtn.addActionListener(new ActionListener() {
@@ -193,6 +198,7 @@ public class AddWindow extends JFrame {
 	 */
 	private JButton homeBtn() {
 		JButton homeBtn = new JButton("Home");
+		homeBtn.setOpaque(true);
 		homeBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		homeBtn.setBackground(new Color(169, 169, 169));
 		homeBtn.addActionListener(new ActionListener() {

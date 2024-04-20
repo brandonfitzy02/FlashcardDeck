@@ -148,6 +148,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet12 = new JButton("Empty");
 		btnSet12.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet12.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet12.setOpaque(true);
 		btnSet12.setBackground(new Color(169, 169, 200));
 		btnSetAction(12, btnSet12);
 		return btnSet12;
@@ -160,6 +161,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet11 = new JButton("Empty");
 		btnSet11.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet11.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet11.setOpaque(true);
 		btnSet11.setBackground(new Color(169, 169, 200));
 		btnSetAction(11, btnSet11);
 		return btnSet11;
@@ -172,6 +174,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet10 = new JButton("Empty");
 		btnSet10.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet10.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet10.setOpaque(true);
 		btnSet10.setBackground(new Color(169, 169, 200));
 		btnSetAction(10, btnSet10);
 		return btnSet10;
@@ -184,6 +187,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet9 = new JButton("Empty");
 		btnSet9.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet9.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet9.setOpaque(true);
 		btnSet9.setBackground(new Color(169, 169, 200));
 		btnSetAction(9, btnSet9);
 		return btnSet9;
@@ -196,6 +200,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet8 = new JButton("Empty");
 		btnSet8.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet8.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet8.setOpaque(true);
 		btnSet8.setBackground(new Color(169, 169, 200));
 		btnSetAction(8, btnSet8);
 		return btnSet8;
@@ -208,6 +213,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet7 = new JButton("Empty");
 		btnSet7.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet7.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet7.setOpaque(true);
 		btnSet7.setBackground(new Color(169, 169, 200));
 		btnSetAction(7, btnSet7);
 		return btnSet7;
@@ -220,6 +226,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet6 = new JButton("Empty");
 		btnSet6.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet6.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet6.setOpaque(true);
 		btnSet6.setBackground(new Color(169, 169, 200));
 		btnSetAction(6, btnSet6);
 		return btnSet6;
@@ -232,6 +239,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet5 = new JButton("Empty");
 		btnSet5.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet5.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet5.setOpaque(true);
 		btnSet5.setBackground(new Color(169, 169, 200));
 		btnSetAction(5, btnSet5);
 		return btnSet5;
@@ -244,6 +252,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet4 = new JButton("Empty");
 		btnSet4.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet4.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet4.setOpaque(true);
 		btnSet4.setBackground(new Color(169, 169, 200));
 		btnSetAction(4, btnSet4);
 		return btnSet4;
@@ -256,6 +265,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet3 = new JButton("Empty");
 		btnSet3.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet3.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet3.setOpaque(true);
 		btnSet3.setBackground(new Color(169, 169, 200));
 		btnSetAction(3, btnSet3);
 		return btnSet3;
@@ -267,6 +277,7 @@ public class DeleteSetWindow extends JFrame {
 	private JButton btnSet2() {
 		JButton btnSet2 = new JButton("Empty");
 		btnSet2.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
+		btnSet2.setOpaque(true);
 		btnSet2.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet2.setBackground(new Color(169, 169, 200));
 		btnSetAction(2, btnSet2);
@@ -280,6 +291,7 @@ public class DeleteSetWindow extends JFrame {
 		JButton btnSet1 = new JButton("Empty");
 		btnSet1.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet1.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
+		btnSet1.setOpaque(true);
 		btnSet1.setBackground(new Color(169, 169, 200));
 		btnSetAction(1, btnSet1);
 		return btnSet1;
@@ -295,10 +307,9 @@ public class DeleteSetWindow extends JFrame {
 		if (HomeWindow.currentDecks.size() >= value) {
 			button.setText(HomeWindow.currentDecks.get(value - 1).getName());
 		}
-
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (button.getText() != "Empty") {
+		if (button.getText() != "Empty")
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					String[] options = { "yes", "no" };
 					int selection = JOptionPane.showOptionDialog(null, "Are you sure you'd like to delete the set?",
 							"Select an option", 0, 2, null, options, options[0]);
@@ -311,12 +322,8 @@ public class DeleteSetWindow extends JFrame {
 					if (selection == 1) {
 						JOptionPane.showMessageDialog(null, "Operation was cancelled");
 					}
-
-				} else {
-					JOptionPane.showMessageDialog(null, "No set currently occupies this spot.");
 				}
-			}
-		});
+			});
 	}
 
 	/**
@@ -345,6 +352,7 @@ public class DeleteSetWindow extends JFrame {
 	 */
 	private JButton addSetBtn() {
 		JButton addSetBtn = new JButton("Add Set");
+		addSetBtn.setOpaque(true);
 		addSetBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		addSetBtn.setBackground(new Color(169, 169, 169));
 		addSetBtn.addActionListener(new ActionListener() {
@@ -365,6 +373,7 @@ public class DeleteSetWindow extends JFrame {
 	 */
 	private JButton deleteSetBtn() {
 		JButton deleteSetBtn = new JButton("Delete Set");
+		deleteSetBtn.setOpaque(true);
 		deleteSetBtn.setForeground(new Color(255, 255, 255));
 		deleteSetBtn.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		deleteSetBtn.setBackground(new Color(150, 150, 150));
@@ -386,6 +395,7 @@ public class DeleteSetWindow extends JFrame {
 				ds.setVisible(true);
 			}
 		});
+		viewSetsBtn.setOpaque(true);
 		viewSetsBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		viewSetsBtn.setBackground(new Color(169, 169, 169));
 		viewSetsBtn.setFont(new Font("Yu Gothic UI", Font.PLAIN, 20));
@@ -399,6 +409,7 @@ public class DeleteSetWindow extends JFrame {
 	 */
 	private JButton homeBtn() {
 		JButton homeBtn = new JButton("Home");
+		homeBtn.setOpaque(true);
 		homeBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		homeBtn.setBackground(new Color(169, 169, 169));
 		homeBtn.addActionListener(new ActionListener() {

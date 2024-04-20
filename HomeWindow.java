@@ -2,6 +2,9 @@ package teamProjectGui;
 
 import java.awt.EventQueue;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -14,12 +17,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
 
 /**
  * Window for the HOME section of FlashcardGUI
@@ -83,7 +88,53 @@ public class HomeWindow extends JFrame {
 
 		JLabel lblNewLabel_1 = bottomTextLabel();
 		contentPane.add(lblNewLabel_1, BorderLayout.SOUTH);
+		{
+			JPanel WestPanel = new JPanel();
+			WestPanel.setOpaque(false);
+			contentPane.add(WestPanel, BorderLayout.WEST);
+			WestPanel.setLayout(new GridLayout(0, 1, 0, 0));
+			{
+				JLabel lblLastOpened = lblLastOpened();
+				WestPanel.add(lblLastOpened);
+			}
+			{
+				JButton btnLastOpened = btnLastOpened();
+				WestPanel.add(btnLastOpened);
+			}
+		}
 
+		getDeck("src/teamProjectGui/TextFiles/Flashcards.csv");
+
+	}
+
+	public static void readingFile(List<FlashcardDeck> list) {
+
+	}
+
+	/**
+	 * A button to press the last opened deck
+	 */
+	private JButton btnLastOpened() {
+		JButton btnLastOpened = new JButton("This is a test");
+		if (currentDecks.isEmpty() || currentDecks.size() == 0) {
+			btnLastOpened.setVisible(false);
+		}
+		btnLastOpened.setBorder(new MatteBorder(10, 10, 70, 10, (Color) new Color(130, 125, 150)));
+		return btnLastOpened;
+	}
+
+	/**
+	 * Shows a label of the last opened deck
+	 */
+	private JLabel lblLastOpened() {
+		JLabel lblLastOpened = new JLabel("TBD");
+		if (currentDecks.isEmpty() || currentDecks.size() == 0) {
+			lblLastOpened.setVisible(false);
+		}
+		lblLastOpened.setBorder(new EmptyBorder(50, 0, 10, 0));
+		lblLastOpened.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLastOpened.setFont(new Font("Trebuchet MS", Font.ITALIC, 20));
+		return lblLastOpened;
 	}
 
 	/**
@@ -112,7 +163,7 @@ public class HomeWindow extends JFrame {
 		if (currentDecks.isEmpty() || currentDecks.size() == 0) {
 			lblWelcomeTxt.setText("Welcome");
 		}
-		lblWelcomeTxt.setBorder(new EmptyBorder(0, 0, 100, 0));
+		lblWelcomeTxt.setBorder(new EmptyBorder(0, 0, 100, 90));
 		lblWelcomeTxt.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcomeTxt.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
 		return lblWelcomeTxt;
@@ -133,6 +184,7 @@ public class HomeWindow extends JFrame {
 	 */
 	private JButton addSetBtn() {
 		JButton addSetBtn = new JButton("Add Set");
+		addSetBtn.setOpaque(true);
 		addSetBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		addSetBtn.setBackground(new Color(169, 169, 169));
 		addSetBtn.addActionListener(new ActionListener() {
@@ -153,6 +205,7 @@ public class HomeWindow extends JFrame {
 	 */
 	private JButton deleteSetBtn() {
 		JButton deleteSetBtn = new JButton("Delete Set");
+		deleteSetBtn.setOpaque(true);
 		deleteSetBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		deleteSetBtn.setBackground(new Color(169, 169, 169));
 		deleteSetBtn.addActionListener(new ActionListener() {
@@ -173,6 +226,7 @@ public class HomeWindow extends JFrame {
 	 */
 	private JButton viewSetsBtn() {
 		JButton viewSetsBtn = new JButton("View Sets");
+		viewSetsBtn.setOpaque(true);
 		viewSetsBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		viewSetsBtn.setBackground(new Color(169, 169, 169));
 		viewSetsBtn.addActionListener(new ActionListener() {
@@ -193,11 +247,46 @@ public class HomeWindow extends JFrame {
 	 */
 	private JButton homeBtn() {
 		JButton homeBtn = new JButton("Home");
+		homeBtn.setOpaque(true);
 		homeBtn.setForeground(new Color(255, 255, 255));
 		homeBtn.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		homeBtn.setBackground(new Color(150, 150, 150));
 		homeBtn.setFont(new Font("Yu Gothic UI", Font.PLAIN, 20));
 		return homeBtn;
+	}
+
+	public static void getDeck(String filePath) {
+
+		List<String> currentDeckNames = new ArrayList<String>();
+
+		try (Scanner reader = new Scanner(new File(filePath))) {
+
+			while (reader.hasNextLine()) {
+				String line = reader.nextLine();
+				String[] parts = line.split(",");
+				String name = parts[0];
+				String front = parts[1];
+				String back = parts[2];
+
+				FlashcardDeck deck = new FlashcardDeck(name);
+
+				if (!currentDeckNames.contains(name)) {
+					deck.addCard(new Flashcard(front, back));
+					currentDecks.add(deck);
+					currentDeckNames.add(name);
+					System.out.println(currentDeckNames);
+				} else {
+					currentDecks.forEach(cd -> {
+						if (cd.getName().equals(name)) {
+							cd.addCard(new Flashcard(front, back));
+						}
+					});
+				}
+
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

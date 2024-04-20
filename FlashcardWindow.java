@@ -1,6 +1,8 @@
 package teamProjectGui;
 
 import java.awt.BorderLayout;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -9,6 +11,9 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -109,6 +114,7 @@ public class FlashcardWindow extends JFrame {
 	 */
 	private JButton btnNext() {
 		JButton btnNext = new JButton("Next");
+		btnNext.setOpaque(true);
 		btnNext.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnNext.setBackground(new Color(169, 169, 200));
 		if (HomeWindow.currentDecks.get(ViewSetsWindow.deckNum).getCard(currentFlashcard + 1) != null) {
@@ -131,6 +137,7 @@ public class FlashcardWindow extends JFrame {
 	 */
 	private JButton btnPrevious() {
 		JButton btnPrevious = new JButton("Previous");
+		btnPrevious.setOpaque(true);
 		btnPrevious.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnPrevious.setBackground(new Color(169, 169, 200));
 		if (currentFlashcard > 0) {
@@ -190,6 +197,7 @@ public class FlashcardWindow extends JFrame {
 	 */
 	private JButton addSetBtn() {
 		JButton addSetBtn = new JButton("Add Set");
+		addSetBtn.setOpaque(true);
 		addSetBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		addSetBtn.setBackground(new Color(169, 169, 169));
 		addSetBtn.addActionListener(new ActionListener() {
@@ -210,6 +218,7 @@ public class FlashcardWindow extends JFrame {
 	 */
 	private JButton deleteSetBtn() {
 		JButton deleteSetBtn = new JButton("Delete Set");
+		deleteSetBtn.setOpaque(true);
 		deleteSetBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		deleteSetBtn.setBackground(new Color(169, 169, 169));
 		deleteSetBtn.addActionListener(new ActionListener() {
@@ -230,6 +239,7 @@ public class FlashcardWindow extends JFrame {
 	 */
 	private JButton viewSetsBtn() {
 		JButton viewSetsBtn = new JButton("View Sets");
+		viewSetsBtn.setOpaque(true);
 		viewSetsBtn.setForeground(new Color(255, 255, 255));
 		viewSetsBtn.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		viewSetsBtn.setBackground(new Color(150, 150, 150));
@@ -251,6 +261,7 @@ public class FlashcardWindow extends JFrame {
 	 */
 	private JButton homeBtn() {
 		JButton homeBtn = new JButton("Home");
+		homeBtn.setOpaque(true);
 		homeBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		homeBtn.setBackground(new Color(169, 169, 169));
 		homeBtn.addActionListener(new ActionListener() {

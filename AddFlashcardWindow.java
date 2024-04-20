@@ -128,7 +128,9 @@ public class AddFlashcardWindow extends JFrame {
 
 				HomeWindow.currentDecks.forEach(cd -> {
 					if (cd.getName().equals(deck)) {
-						cd.addCard(front, back);
+						// Diego - Changed the addCard method to take in a Flashcard object parameter
+						// instead of two parameters (front, back)
+						cd.addCard(new Flashcard(front, back));
 					}
 				});
 
@@ -229,6 +231,7 @@ public class AddFlashcardWindow extends JFrame {
 				as.setVisible(true);
 			}
 		});
+		addSetBtn.setOpaque(true);
 		addSetBtn.setForeground(new Color(255, 255, 255));
 		addSetBtn.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		addSetBtn.setBackground(new Color(150, 150, 150));
@@ -243,6 +246,7 @@ public class AddFlashcardWindow extends JFrame {
 	 */
 	private JButton deleteSetBtn() {
 		JButton deleteSetBtn = new JButton("Delete Set");
+		deleteSetBtn.setOpaque(true);
 		deleteSetBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		deleteSetBtn.setBackground(new Color(169, 169, 169));
 		deleteSetBtn.addActionListener(new ActionListener() {
@@ -263,6 +267,7 @@ public class AddFlashcardWindow extends JFrame {
 	 */
 	private JButton viewSetsBtn() {
 		JButton viewSetsBtn = new JButton("View Sets");
+		viewSetsBtn.setOpaque(true);
 		viewSetsBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		viewSetsBtn.setBackground(new Color(169, 169, 169));
 		viewSetsBtn.addActionListener(new ActionListener() {
@@ -283,6 +288,7 @@ public class AddFlashcardWindow extends JFrame {
 	 */
 	private JButton homeBtn() {
 		JButton homeBtn = new JButton("Home");
+		homeBtn.setOpaque(true);
 		homeBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		homeBtn.setBackground(new Color(169, 169, 169));
 		homeBtn.addActionListener(new ActionListener() {

@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,6 +33,8 @@ public class AddSetWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField nameOfSetTxt;
+	
+	private String newSetName;
 
 	/**
 	 * Launch the application.
@@ -107,11 +110,17 @@ public class AddSetWindow extends JFrame {
 				if (HomeWindow.currentDecks.size() < 12) {
 					String name = nameOfSetTxt.getText();
 					if (name.isEmpty()) {
-
+						JOptionPane.showMessageDialog(null, "Please type a name for the new set!");
 					} else {
-						FlashcardDeck fd = new FlashcardDeck(name);
+//						FlashcardDeck fd = new FlashcardDeck(name);
+						try {
+							FileManager.writeNewSetToFile("src/teamProjectGui/TextFiles/Flashcards.csv", name);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 
-						HomeWindow.currentDecks.add(fd);
+//						HomeWindow.currentDecks.add(fd);
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Maximum value reached");
@@ -170,6 +179,7 @@ public class AddSetWindow extends JFrame {
 				as.setVisible(true);
 			}
 		});
+		addSetBtn.setOpaque(true);
 		addSetBtn.setForeground(new Color(255, 255, 255));
 		addSetBtn.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		addSetBtn.setBackground(new Color(150, 150, 150));
@@ -184,6 +194,7 @@ public class AddSetWindow extends JFrame {
 	 */
 	private JButton deleteSetBtn() {
 		JButton deleteSetBtn = new JButton("Delete Set");
+		deleteSetBtn.setOpaque(true);
 		deleteSetBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		deleteSetBtn.setBackground(new Color(169, 169, 169));
 		deleteSetBtn.addActionListener(new ActionListener() {
@@ -204,6 +215,7 @@ public class AddSetWindow extends JFrame {
 	 */
 	private JButton viewSetsBtn() {
 		JButton viewSetsBtn = new JButton("View Sets");
+		viewSetsBtn.setOpaque(true);
 		viewSetsBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		viewSetsBtn.setBackground(new Color(169, 169, 169));
 		viewSetsBtn.addActionListener(new ActionListener() {
@@ -224,6 +236,7 @@ public class AddSetWindow extends JFrame {
 	 */
 	private JButton homeBtn() {
 		JButton homeBtn = new JButton("Home");
+		homeBtn.setOpaque(true);
 		homeBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		homeBtn.setBackground(new Color(169, 169, 169));
 		homeBtn.addActionListener(new ActionListener() {
