@@ -295,9 +295,10 @@ public class DeleteSetWindow extends JFrame {
 		if (HomeWindow.currentDecks.size() >= value) {
 			button.setText(HomeWindow.currentDecks.get(value - 1).getName());
 		}
-		if (button.getText() != "Empty")
-			button.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (button.getText() != "Empty") {
 					String[] options = { "yes", "no" };
 					int selection = JOptionPane.showOptionDialog(null, "Are you sure you'd like to delete the set?",
 							"Select an option", 0, 2, null, options, options[0]);
@@ -310,8 +311,12 @@ public class DeleteSetWindow extends JFrame {
 					if (selection == 1) {
 						JOptionPane.showMessageDialog(null, "Operation was cancelled");
 					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "No set currently occupies this spot.");
 				}
-			});
+			}
+		});
 	}
 
 	/**
