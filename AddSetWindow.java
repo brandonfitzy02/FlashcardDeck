@@ -9,7 +9,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,9 +31,9 @@ public class AddSetWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField nameOfSetTxt;
-	
-	private String newSetName;
+	private JTextField nameTxt;
+	private JTextField frontSideTxt;
+	private JTextField backSideTxt;
 
 	/**
 	 * Launch the application.
@@ -84,15 +83,33 @@ public class AddSetWindow extends JFrame {
 		JPanel centerPanel = new JPanel();
 		centerPanel.setOpaque(false);
 		contentPane.add(centerPanel, BorderLayout.CENTER);
-		centerPanel.setLayout(new GridLayout(0, 2, 0, 0));
+		centerPanel.setLayout(new GridLayout(3, 2, 0, 0));
 		{
 			JLabel lblNameSet = lblNameSet();
 			centerPanel.add(lblNameSet);
 		}
 		{
 			nameTxt();
-			centerPanel.add(nameOfSetTxt);
-			nameOfSetTxt.setColumns(10);
+			centerPanel.add(nameTxt);
+			nameTxt.setColumns(10);
+		}
+		{
+			JLabel lblFrontSideName = lblFrontSide();
+			centerPanel.add(lblFrontSideName);
+		}
+		{
+			frontSideTxt();
+			centerPanel.add(frontSideTxt);
+			frontSideTxt.setColumns(10);
+		}
+		{
+			JLabel lblBackSide = lblBackSide();
+			centerPanel.add(lblBackSide);
+		}
+		{
+			backSideTxt();
+			centerPanel.add(backSideTxt);
+			backSideTxt.setColumns(10);
 		}
 
 		JButton btnAdd = btnAdd();
@@ -105,22 +122,22 @@ public class AddSetWindow extends JFrame {
 	 */
 	private JButton btnAdd() {
 		JButton btnAdd = new JButton("Add");
+		btnAdd.setOpaque(true);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (HomeWindow.currentDecks.size() < 12) {
-					String name = nameOfSetTxt.getText();
+					String name = nameTxt.getText();
 					if (name.isEmpty()) {
-						JOptionPane.showMessageDialog(null, "Please type a name for the new set!");
-					} else {
-//						FlashcardDeck fd = new FlashcardDeck(name);
-						try {
-							FileManager.writeNewSetToFile("src/teamProjectGui/TextFiles/Flashcards.csv", name);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
 
-//						HomeWindow.currentDecks.add(fd);
+					} else {
+						FlashcardDeck fd = new FlashcardDeck(name);
+						String front = frontSideTxt.getText();
+						String back = backSideTxt.getText();
+
+						HomeWindow.currentDecks.add(fd);
+						
+						Flashcard f = new Flashcard(front, back);
+						fd.addCard(f);
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Maximum value reached");
@@ -137,26 +154,74 @@ public class AddSetWindow extends JFrame {
 		return btnAdd;
 	}
 
+	private void backSideTxt() {
+		backSideTxt = new JTextField();
+		backSideTxt.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		backSideTxt.setBorder(new MatteBorder(10, 1, 10, 30, (Color) new Color(130, 125, 150)));
+		backSideTxt.setHorizontalAlignment(JTextField.CENTER);
+	}
+
+	/**
+	 * Text field to save front side of flashcard to files
+	 */
+	private void frontSideTxt() {
+		frontSideTxt = new JTextField();
+		frontSideTxt.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		frontSideTxt.setBorder(new MatteBorder(25, 1, 25, 30, (Color) new Color(130, 125, 150)));
+		frontSideTxt.setHorizontalAlignment(JTextField.CENTER);
+	}
+
 	/**
 	 * Text field to save name of flashcard set to files
 	 */
 	private void nameTxt() {
-		nameOfSetTxt = new JTextField();
-		nameOfSetTxt.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-		nameOfSetTxt.setBorder(new MatteBorder(100, 1, 100, 80, (Color) new Color(130, 125, 150)));
+		nameTxt = new JTextField();
+		nameTxt.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		nameTxt.setBorder(new MatteBorder(25, 1, 25, 30, (Color) new Color(130, 125, 150)));
+		nameTxt.setHorizontalAlignment(JTextField.CENTER);
+	}
+
+	/**
+	 * Title asking for the back side of the flashcard
+	 * 
+	 * @return lbl asking for back side of set
+	 */
+	private JLabel lblBackSide() {
+		JLabel lblBackSide = new JLabel("Back Side:");
+		lblBackSide.setOpaque(true);
+		lblBackSide.setBorder(new EmptyBorder(0, 0, 0, 20));
+		lblBackSide.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBackSide.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		return lblBackSide;
+	}
+
+	/**
+	 * Title for the front side of the flashcard
+	 * 
+	 * @return lbl asking for front side of set
+	 */
+	private JLabel lblFrontSide() {
+		JLabel lblFrontSide = new JLabel("Front Side:");
+		lblFrontSide.setOpaque(true);
+		lblFrontSide.setBorder(new EmptyBorder(0, 0, 0, 20));
+		lblFrontSide.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lblFrontSide.setHorizontalAlignment(SwingConstants.TRAILING);
+		return lblFrontSide;
 	}
 
 	/**
 	 * Title for the name of the set entry box
+	 * 
+	 * @return lbl asking for name of the set
 	 */
 	private JLabel lblNameSet() {
 		JLabel lblNameSet = new JLabel("Name Of Set:");
-		lblNameSet.setBorder(new EmptyBorder(0, 0, 0, 45));
-		lblNameSet.setFont(new Font("Trebuchet MS", Font.PLAIN, 20));
+		lblNameSet.setOpaque(true);
+		lblNameSet.setBorder(new EmptyBorder(0, 0, 0, 20));
+		lblNameSet.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		lblNameSet.setHorizontalAlignment(SwingConstants.TRAILING);
 		return lblNameSet;
 	}
-
 	/**
 	 * Method to allow window to close when used
 	 */
@@ -172,6 +237,7 @@ public class AddSetWindow extends JFrame {
 	 */
 	private JButton addSetBtn() {
 		JButton addSetBtn = new JButton("Add Set");
+		addSetBtn.setOpaque(true);
 		addSetBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close();
@@ -179,7 +245,6 @@ public class AddSetWindow extends JFrame {
 				as.setVisible(true);
 			}
 		});
-		addSetBtn.setOpaque(true);
 		addSetBtn.setForeground(new Color(255, 255, 255));
 		addSetBtn.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		addSetBtn.setBackground(new Color(150, 150, 150));
