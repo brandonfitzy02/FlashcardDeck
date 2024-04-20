@@ -188,7 +188,6 @@ public class AddSetWindow extends JFrame {
 	 */
 	private JLabel lblBackSide() {
 		JLabel lblBackSide = new JLabel("Back Side:");
-		lblBackSide.setOpaque(true);
 		lblBackSide.setBorder(new EmptyBorder(0, 0, 0, 20));
 		lblBackSide.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblBackSide.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
@@ -202,7 +201,6 @@ public class AddSetWindow extends JFrame {
 	 */
 	private JLabel lblFrontSide() {
 		JLabel lblFrontSide = new JLabel("Front Side:");
-		lblFrontSide.setOpaque(true);
 		lblFrontSide.setBorder(new EmptyBorder(0, 0, 0, 20));
 		lblFrontSide.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		lblFrontSide.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -216,7 +214,6 @@ public class AddSetWindow extends JFrame {
 	 */
 	private JLabel lblNameSet() {
 		JLabel lblNameSet = new JLabel("Name Of Set:");
-		lblNameSet.setOpaque(true);
 		lblNameSet.setBorder(new EmptyBorder(0, 0, 0, 20));
 		lblNameSet.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		lblNameSet.setHorizontalAlignment(SwingConstants.TRAILING);
