@@ -9,9 +9,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,8 +31,6 @@ public class ViewSetsWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static int deckNum;
-
-	private String fileFlashcards = "src/teamProjectGui/TextFiles/Flashcards.csv";
 
 	/**
 	 * Launch the application.
@@ -159,7 +154,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet12() {
 		JButton btnSet12 = new JButton("Empty");
-		btnSet12.setOpaque(true);
 		btnSet12.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet12.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet12.setBackground(new Color(169, 169, 200));
@@ -172,7 +166,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet11() {
 		JButton btnSet11 = new JButton("Empty");
-		btnSet11.setOpaque(true);
 		btnSet11.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet11.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet11.setBackground(new Color(169, 169, 200));
@@ -185,7 +178,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet10() {
 		JButton btnSet10 = new JButton("Empty");
-		btnSet10.setOpaque(true);
 		btnSet10.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet10.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet10.setBackground(new Color(169, 169, 200));
@@ -198,7 +190,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet9() {
 		JButton btnSet9 = new JButton("Empty");
-		btnSet9.setOpaque(true);
 		btnSet9.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet9.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet9.setBackground(new Color(169, 169, 200));
@@ -211,7 +202,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet8() {
 		JButton btnSet8 = new JButton("Empty");
-		btnSet8.setOpaque(true);
 		btnSet8.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet8.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet8.setBackground(new Color(169, 169, 200));
@@ -224,7 +214,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet7() {
 		JButton btnSet7 = new JButton("Empty");
-		btnSet7.setOpaque(true);
 		btnSet7.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet7.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet7.setBackground(new Color(169, 169, 200));
@@ -237,7 +226,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet6() {
 		JButton btnSet6 = new JButton("Empty");
-		btnSet6.setOpaque(true);
 		btnSet6.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet6.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet6.setBackground(new Color(169, 169, 200));
@@ -250,7 +238,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet5() {
 		JButton btnSet5 = new JButton("Empty");
-		btnSet5.setOpaque(true);
 		btnSet5.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet5.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet5.setBackground(new Color(169, 169, 200));
@@ -263,7 +250,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet4() {
 		JButton btnSet4 = new JButton("Empty");
-		btnSet4.setOpaque(true);
 		btnSet4.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet4.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet4.setBackground(new Color(169, 169, 200));
@@ -276,7 +262,6 @@ public class ViewSetsWindow extends JFrame {
 	 */
 	private JButton btnSet3() {
 		JButton btnSet3 = new JButton("Empty");
-		btnSet3.setOpaque(true);
 		btnSet3.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet3.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet3.setBackground(new Color(169, 169, 200));
@@ -288,13 +273,7 @@ public class ViewSetsWindow extends JFrame {
 	 * Button two on screen indicating second set
 	 */
 	private JButton btnSet2() {
-		JButton btnSet2 = new JButton();
-
-		if (getSetsFromFile(fileFlashcards) != null) {
-			btnSet2.setText(getSetsFromFile(fileFlashcards).get(1));
-		}
-
-		btnSet2.setOpaque(true);
+		JButton btnSet2 = new JButton("Empty");
 		btnSet2.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet2.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet2.setBackground(new Color(169, 169, 200));
@@ -306,13 +285,7 @@ public class ViewSetsWindow extends JFrame {
 	 * Button one on screen indicating first set
 	 */
 	private JButton btnSet1() {
-		JButton btnSet1 = new JButton();
-
-		if (getSetsFromFile(fileFlashcards) != null) {
-			btnSet1.setText(getSetsFromFile(fileFlashcards).get(0));
-		}
-
-		btnSet1.setOpaque(true);
+		JButton btnSet1 = new JButton("Empty");
 		btnSet1.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnSet1.setBorder(new MatteBorder(10, 20, 10, 20, (Color) new Color(130, 125, 150)));
 		btnSet1.setBackground(new Color(169, 169, 200));
@@ -334,15 +307,14 @@ public class ViewSetsWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (button.getText() == "Empty") {
 					JOptionPane.showMessageDialog(null, "No set currently occupies this spot.");
-
 				} else if (HomeWindow.currentDecks.get(ViewSetsWindow.deckNum).getCard(0) == null) {
 					JOptionPane.showMessageDialog(null, "No flashcards are on this set!");
 				} else {
+					deckNum = value - 1;
+					resetCurrentFlashcard();
 					close();
 					FlashcardWindow as = new FlashcardWindow();
 					as.setVisible(true);
-					deckNum = value - 1;
-
 				}
 			}
 		});
@@ -442,27 +414,6 @@ public class ViewSetsWindow extends JFrame {
 		});
 		homeBtn.setFont(new Font("Yu Gothic UI", Font.PLAIN, 20));
 		return homeBtn;
-	}
-
-	/**
-	 * Method for retrieving the all the names of the sets from the CSV file. An
-	 * ArrayList was created to store all the names. That ArrayList is returned.
-	 * 
-	 * @param fileFlashcards The CSV file that the names are being retrieved from.
-	 * @param testDeck A FlashcardDeck object is being used to call the readFromFile method.
-	 * @return The ArrayList of names.
-	 * 
-	 * @author Diego Galvan
-	 */
-	private static ArrayList<String> getSetsFromFile(String fileFlashcards) {
-		Map<String, List<Flashcard>> flashcardDecks = new FlashcardDeck("").readFromFile(fileFlashcards);
-		ArrayList<String> namesOfSets = new ArrayList<>();
-
-		for (String deckName : flashcardDecks.keySet()) {
-			namesOfSets.add(deckName);
-		}
-
-		return namesOfSets;
 	}
 
 }
