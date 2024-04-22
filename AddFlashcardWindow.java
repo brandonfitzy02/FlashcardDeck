@@ -128,9 +128,8 @@ public class AddFlashcardWindow extends JFrame {
 
 				HomeWindow.currentDecks.forEach(cd -> {
 					if (cd.getName().equals(deck)) {
-						// Diego - Changed the addCard method to take in a Flashcard object parameter
-						// instead of two parameters (front, back)
 						cd.addCard(new Flashcard(front, back));
+						FileManager.writeSetAndCardToFile("src/teamProjectGui/TextFiles/Flashcards.csv", deck, front, back);
 					}
 				});
 

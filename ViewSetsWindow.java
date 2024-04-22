@@ -300,6 +300,7 @@ public class ViewSetsWindow extends JFrame {
 	 * @param button - which button value
 	 */
 	public void btnSetAction(int value, JButton button) {
+		button.setOpaque(true);
 		if (HomeWindow.currentDecks.size() >= value) {
 			button.setText(HomeWindow.currentDecks.get(value - 1).getName());
 		}

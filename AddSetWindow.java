@@ -128,7 +128,7 @@ public class AddSetWindow extends JFrame {
 				if (HomeWindow.currentDecks.size() < 12) {
 					String name = nameTxt.getText();
 					if (name.isEmpty()) {
-
+						JOptionPane.showMessageDialog(null, "Oops! The set needs a name!");
 					} else {
 						FlashcardDeck fd = new FlashcardDeck(name);
 						String front = frontSideTxt.getText();
@@ -138,6 +138,8 @@ public class AddSetWindow extends JFrame {
 						
 						Flashcard f = new Flashcard(front, back);
 						fd.addCard(f);
+						
+						FileManager.writeSetAndCardToFile("src/teamProjectGui/TextFiles/Flashcards.csv", name, front, back);
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Maximum value reached");

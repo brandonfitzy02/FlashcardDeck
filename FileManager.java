@@ -15,9 +15,6 @@ import java.util.Scanner;
  * @author Diego Galvan
  */
 public class FileManager {
-	private static List<Flashcard> deck;
-	private static String deckName;
-
 	/**
 	 * Reads content from a specified file using scanner.
 	 * 
@@ -67,63 +64,53 @@ public class FileManager {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Writes the flashcard deck to a csv file. Each card is written as:
 	 * deckName,front,back
 	 * 
 	 * @param filePath The path to the csv file.
 	 */
-	public static void writeCardToFile(String filePath, String deckName, String front, String back) {
-		
-		
+	public static void writeSetAndCardToFile(String filePath, String deckName, String front, String back) {
+
 		try (PrintWriter writer = new PrintWriter(new FileWriter(filePath, true))) {
-//			deck.add(new Flashcard(front, back));
-//			for (Flashcard card : deck) {
-//				writer.printf("%s,%s,%s%n", deckName, card.getFront(), card.getBack());
-//			}
 			writer.printf("%s,%s,%s,%n", deckName, front, back);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (NullPointerException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 	}
-	
-	public static void writeNewSetToFile(String filePath, String deckName) throws IOException {
-		try (PrintWriter writer = new PrintWriter(new FileWriter(filePath, true))) {
-			writer.printf("%s,%n", deckName);
-			System.out.println("New set: " + deckName);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
-	 * Retrieves the whole flashcard deck.
+	 * The deleteDeck method reads the entire file line by line, checking if each
+	 * line belongs to the specified 'deckName'.
 	 * 
-	 * @param line A line from the csv file that includes data about the card.
-	 * @return The flashcard deck
+	 * @param filePath The String of the file path
+	 * @param deckName The name of the deck to be deleted
 	 */
-//	public static FlashcardDeck getDeck(String line) {
-//		String[] parts = line.split(",");
-////		String placeholder;
-//
-//		try {
-//			String nameOfDeck = parts[0];
-//
-////			if (line.startsWith("name of set")) {
-////				placeholder = nameOfDeck;
-////				System.out.println(nameOfDeck);
-////			}
-//
-//			return new FlashcardDeck(nameOfDeck);
-//		} catch (ArrayIndexOutOfBoundsException e) {
-//			System.err.println("Error: " + line);
-//			return null;
-//		}
-//	}
+	public static void deleteDeck(String filePath, String deckName) {
+		List<String> linesToKeep = new ArrayList<>();
+		try (Scanner reader = new Scanner(new File(filePath))) {
+			while (reader.hasNextLine()) {
+				String line = reader.nextLine();
+				if (!line.startsWith(deckName + ",")) { // Keep lines that do not belong to the deckName
+					linesToKeep.add(line);
+				}
+			}
+		} catch (IOException e) {
+			System.err.println("Error writing to CSV file: " + e.getMessage());
+		}
+
+		// Rewrite the file with only the lines to keep
+		try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+			for (String line : linesToKeep) {
+				writer.println(line);
+			}
+		} catch (IOException e) {
+			System.err.println("Error writing to CSV file: " + e.getMessage());
+		}
+	}
 }

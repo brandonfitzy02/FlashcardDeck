@@ -292,6 +292,7 @@ public class DeleteSetWindow extends JFrame {
 	 * @param button - which button value
 	 */
 	public void btnSetAction(int value, JButton button) {
+		button.setOpaque(true);
 		if (HomeWindow.currentDecks.size() >= value) {
 			button.setText(HomeWindow.currentDecks.get(value - 1).getName());
 		}
@@ -304,6 +305,7 @@ public class DeleteSetWindow extends JFrame {
 							"Select an option", 0, 2, null, options, options[0]);
 					if (selection == 0) {
 						HomeWindow.currentDecks.remove(value - 1);
+						FileManager.deleteDeck("src/teamProjectGui/TextFiles/Flashcards.csv", button.getText());
 						close();
 						DeleteSetWindow ds = new DeleteSetWindow();
 						ds.setVisible(true);
@@ -345,6 +347,7 @@ public class DeleteSetWindow extends JFrame {
 	 */
 	private JButton addSetBtn() {
 		JButton addSetBtn = new JButton("Add Set");
+		addSetBtn.setOpaque(true);
 		addSetBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		addSetBtn.setBackground(new Color(169, 169, 169));
 		addSetBtn.addActionListener(new ActionListener() {
@@ -365,6 +368,7 @@ public class DeleteSetWindow extends JFrame {
 	 */
 	private JButton deleteSetBtn() {
 		JButton deleteSetBtn = new JButton("Delete Set");
+		deleteSetBtn.setOpaque(true);
 		deleteSetBtn.setForeground(new Color(255, 255, 255));
 		deleteSetBtn.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		deleteSetBtn.setBackground(new Color(150, 150, 150));
@@ -386,6 +390,7 @@ public class DeleteSetWindow extends JFrame {
 				ds.setVisible(true);
 			}
 		});
+		viewSetsBtn.setOpaque(true);
 		viewSetsBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		viewSetsBtn.setBackground(new Color(169, 169, 169));
 		viewSetsBtn.setFont(new Font("Yu Gothic UI", Font.PLAIN, 20));
@@ -399,6 +404,7 @@ public class DeleteSetWindow extends JFrame {
 	 */
 	private JButton homeBtn() {
 		JButton homeBtn = new JButton("Home");
+		homeBtn.setOpaque(true);
 		homeBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 		homeBtn.setBackground(new Color(169, 169, 169));
 		homeBtn.addActionListener(new ActionListener() {
